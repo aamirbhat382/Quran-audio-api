@@ -1,0 +1,8 @@
+html{
+    scroll-behavior: smooth;
+  }
+  .one-Surah{
+      height: 90vh;
+      overflow-y: auto;
+      display: none;
+  }
