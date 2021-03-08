@@ -19,7 +19,7 @@ function showSurah(data) {
 }
 
 
-const URL = 'http://api.alquran.cloud/v1/surah'
+const URL = 'https://api.alquran.cloud/v1/surah'
 fetch(URL).then(response => response.json()
 ).then(data => {
     // console.log(data.data);
@@ -34,7 +34,7 @@ function getSurah() {
         btn.addEventListener('click', (e) => {
             container = document.getElementById('container').style.display = 'block'
             const Id = btn.id
-            fetch(`http://api.alquran.cloud/v1/surah/${Id}/ar.alafasy`).then(response => response.json()
+            fetch(`https://api.alquran.cloud/v1/surah/${Id}/ar.alafasy`).then(response => response.json()
             ).then(data => {
                 // console.log(data.data.ayahs);
                 surahDatiles(data.data.ayahs)
