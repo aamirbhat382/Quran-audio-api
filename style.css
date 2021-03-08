@@ -5,4 +5,17 @@ html{
       height: 90vh;
       overflow-y: auto;
       display: none;
+      /* margin-top: 8rem; */
   }
+
+audio{
+max-width : 500px;
+width: 100%;
+outline: none;
+}
+#mainAudioPlayer{
+    display: none;
+}
+a{
+    text-decoration: none;
+}
