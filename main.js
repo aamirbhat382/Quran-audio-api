@@ -1,5 +1,4 @@
-const divInstall = document.getElementById('installContainer');
-const butInstall = document.getElementById('butInstall');
+
 
 /* Put code here */
 
