@@ -22,7 +22,7 @@ function showSurah(data) {
 const URL = 'https://api.alquran.cloud/v1/surah'
 fetch(URL).then(response => response.json()
 ).then(data => {
-    console.log(data.data);
+    // console.log(data.data);
     showSurah(data.data)
     getSurah()
 
