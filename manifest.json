@@ -34,9 +34,9 @@
             "type": "image/png"
         }
     ],
-    "start_url": "https://aamirbhat382.github.io/Quran-audio-api/",
+    "start_url":"https://aamirbhat382.github.io/Quran-audio-api/",
     "background_color": "#198752",
     "display": "standalone",
-    "scope": "https://aamirbhat382.github.io/",
+    "scope":"https://aamirbhat382.github.io/",
     "theme_color": "#198752"
 }
