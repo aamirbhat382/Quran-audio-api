@@ -7,7 +7,7 @@ function showSurah(data) {
         <button  id='${element.number}' class=" surah list-group-item list-group-item-action bg-light text-dark ">
         <div class="d-flex w-100 justify-content-between">
           <h5 class="mb-1">${element.name}</h5>
-          <small class="text-muted">Number Of Ayahs ${element.numberOfAyahs}</small>
+          <small class="text-muted">Number Of Ayahs ${element.numberOfAyahs}  <span class="badge bg-success badge-pill ">${element.number}</span> </small>
         </div>
         <p class="mb-1">${element.englishName}</p>
         <small class="text-muted">${element.englishNameTranslation}</small>
@@ -18,11 +18,11 @@ function showSurah(data) {
     }
 }
 
-
+{/*  */ }
 const URL = 'https://api.alquran.cloud/v1/surah'
 fetch(URL).then(response => response.json()
 ).then(data => {
-    // console.log(data.data);
+    console.log(data.data);
     showSurah(data.data)
     getSurah()
 
@@ -34,7 +34,7 @@ function getSurah() {
         btn.addEventListener('click', (e) => {
             document.getElementById('ListOfSurah').style.display = 'none'
             container = document.getElementById('container').style.display = 'block'
-            container = document.getElementById('mainAudioPlayer').style.display = 'block'
+            container = document.getElementById('mainAudioPlayer').style.display = 'flex'
             const Id = btn.id
             fetch(`https://api.alquran.cloud/v1/surah/${Id}/ar.alafasy`).then(response => response.json()
             ).then(data => {

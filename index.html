@@ -38,31 +38,53 @@
             <a class="nav-link " href="#">About</a>
           </li>
         </ul>
+        <ul class="navbar-nav ">
+          <li class=" nav-item">
+            <a class="nav-link " target="blank" href="https://github.com/aamirbhat382"><i class="bi bi-github"></i></a>
+          </li>
+          <li class=" nav-item">
+            <a class="nav-link " target="blank" href="https://www.facebook.com/aamirbhat382/"><i
+                class="bi bi-facebook"></i></a>
+          </li>
+          <li class=" nav-item">
+            <a class="nav-link " target="blank" href="https://www.instagram.com/aamirbhat382/"><i
+                class="bi bi-instagram"></i></i></a>
+          </li>
+          <li class=" nav-item">
+            <a class="nav-link " target="blank" href="https://twitter.com/aamirbhat382"><i
+                class="bi bi-twitter"></i></a>
+          </li>
+
+        </ul>
         <form class="d-flex">
-          <a class="btn btn-outline-success" href="">Source Code</a>
+          <a class="btn btn-outline-success" target="blank" href="https://github.com/aamirbhat382/Quran-audio-api"><i
+              class="bi bi-github"></i> Source Code</a>
         </form>
       </div>
     </div>
   </nav>
 
   <main class="container p-3 ">
-    <div id="mainAudioPlayer" class="card fixed-bottom bg-dark">
-      <div class="card-body">
-        <div id="audio" class="d-flex justify-content-center ">
-          <audio id="player" controls autoplay>
-          </audio>
-          <button id="back" class="btn btn-success mx-1"><i class="bi bi-arrow-left-square"></i> Back</button>
-        </div>
-      </div>
-    </div>
+    <!-- <div  class="card  bg-dark">
+      <div class="card-body"> -->
+
+    <!-- </div> -->
+    <!-- </div> -->
 
     <div class=" one-Surah border rounded p-1 " id="container">
     </div>
     <div class="list-group" id="ListOfSurah">
     </div>
+    <div id="mainAudioPlayer" class=" fixed-bottom my-3 justify-content-center ">
+      <audio id="player" controls autoplay>
+      </audio>
+      <button id="back" class="btn btn-success mx-1"><i class="bi bi-arrow-left-square"></i> Back</button>
+    </div>
   </main>
-  <footer class="footer bg-dark p-3">
+
+  <footer class="footer bg-dark   p-3">
     <div class="container">
+
       <p class="font-weight-bold text-center text-light"> <a class=" text-info" href="">Developer</a> | <a
           class=" text-info" href="">Api</a> </p>
       <p class="text-center text-light">&copy;2021-2022</p>

@@ -2,7 +2,7 @@ html{
     scroll-behavior: smooth;
   }
   .one-Surah{
-      height: 90vh;
+      height: 70vh;
       overflow-y: auto;
       display: none;
       /* margin-top: 8rem; */
@@ -15,6 +15,7 @@ outline: none;
 }
 #mainAudioPlayer{
     display: none;
+    
 }
 a{
     text-decoration: none;
