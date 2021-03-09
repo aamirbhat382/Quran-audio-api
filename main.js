@@ -7,7 +7,7 @@ const butInstall = document.getElementById('butInstall');
 
 /* Only register a service worker if it's supported */
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('https://aamirbhat382.github.io/Quran-audio-api/');
+    navigator.serviceWorker.register('https://aamirbhat382.github.io/Quran-audio-api/service-worker.js');
 }
 
 /**
