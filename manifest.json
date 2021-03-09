@@ -21,7 +21,7 @@
         {
             "src": "./images/Quran144.png",
             "sizes": "144x144",
-            "type": "image/png"
+            "type":"image/png"
         },
         {
             "src": "./images/Quran192.png",
