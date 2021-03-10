@@ -19,15 +19,9 @@
             "type": "image/png"
         },
         {
-<<<<<<< HEAD
-            "src": "./images//maskable_icon_x128.png",
+            "src": "./images/maskable_icon_x128.png",
             "sizes": "128x128",
             "type": "image/png"
-=======
-            "src": "./images/Quran144.png",
-            "sizes": "144x144",
-            "type":"image/png"
->>>>>>> dbd2435a2bc2515f05f94de01fcd62d0cd4c2580
         },
         {
             "src": "./images/maskable_icon_x192.png ",
@@ -40,13 +34,9 @@
             "type": "image/png"
         }
     ],
-    "start_url":"https://aamirbhat382.github.io/Quran-audio-api/",
+    "start_url": "https://aamirbhat382.github.io/Quran-audio-api/",
     "background_color": "#198752",
     "display": "standalone",
-<<<<<<< HEAD
     "scope": "https://aamirbhat382.github.io/Quran-audio-api/",
-=======
-    "scope":"https://aamirbhat382.github.io/Quran-audio-api/",
->>>>>>> dbd2435a2bc2515f05f94de01fcd62d0cd4c2580
     "theme_color": "#198752"
 }
