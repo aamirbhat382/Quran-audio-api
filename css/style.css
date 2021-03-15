@@ -1,0 +1,68 @@
+body{
+color: white;
+}
+html{
+    scroll-behavior: smooth;
+  }
+  .one-Surah{
+      height: 70vh;
+      overflow-y: auto;
+      display: none;
+      /* margin-top: 8rem; */
+  }
+                                                                                   
+audio{
+max-width : 500px;
+width: 100%;
+outline: none;
+}
+#mainAudioPlayer{
+    display: none;
+    
+}
+a{
+    text-decoration: none;
+}
+
+
+.audio-player{
+    color: rgb(0, 0, 0);
+    background-color:#198754;
+    display: flex;
+    width: 100%;
+    height: 3.5rem;
+    bottom: 0;
+    left: 0;
+    padding: 0% 5%;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+}
+.duration{
+    display: flex;
+}
+.fill-duration{
+    position: absolute;
+    top: -5px;
+    left: 0px;
+    will-change: width;
+    transition: width 0.1s ease-in;
+    background-color: rgb(179, 76, 76); 
+     height: 5px;
+}
+.controls button{
+    background: none;
+    border: none;
+    color: white;
+    padding: 10px;
+    outline: none;
+    cursor: pointer;
+    transition:   3s ease-in;
+}
+.controls button:hover svg{
+    fill: aliceblue;
+    
+}
+.currentAndtotal{
+    margin: 0rem 0.3rem;
+}

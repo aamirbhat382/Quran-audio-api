@@ -18,7 +18,7 @@ function showSurah(data) {
     }
 }
 
-{/*  */ }
+
 const URL = 'https://api.alquran.cloud/v1/surah'
 fetch(URL).then(response => response.json()
 ).then(data => {
@@ -76,7 +76,6 @@ function surahDatiles(data) {
 
     player.addEventListener('ended', () => {
         document.getElementById(`text-${i}`).style.color = 'black'
-        // document.getElementById(`ayahsNo${i + 1}`).click()
         i++;
         if (i < ayahsArray.length) {
 
@@ -95,6 +94,67 @@ function surahDatiles(data) {
 
 
 
-let BackBtn = document.getElementById('back').addEventListener('click', () => {
-    window.location = 'index.html'
+// let BackBtn = document.getElementById('back').addEventListener('click', () => {
+//     window.location = 'index.html'
+// })
+const audioTag = document.querySelector('audio')
+const currentTimeTag = document.querySelector('.current')
+const durationTag = document.querySelector('.total')
+const fillDuration = document.querySelector('.fill-duration')
+
+const startTimer = () => {
+    const duration = parseInt(audioTag.duration)
+    const strTime = (currentTime) => {
+        let hour = undefined
+        let minutes = undefined
+        let seconds = undefined
+        seconds = (currentTime % 60)
+        minutes = parseInt(currentTime / 60)
+        if (minutes >= 60) {
+            hour = (minutes / 60)
+        }
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        const returningTime = `${hour ? hour + ":" : ""}${minutes ? minutes + ":" : "00:"}${seconds}`
+        // console.log(returningTime);
+        return returningTime
+    }
+    durationTag.innerText = strTime(duration)
+    setInterval(() => {
+        const duration = parseInt(audioTag.duration)
+        const currentTime = parseInt(audioTag.currentTime)
+        const time = (currentTime / duration) * 100
+        const currentTimeInStr = strTime(currentTime)
+        currentTimeTag.innerText = currentTimeInStr
+        fillDuration.style.width = `${time}%`
+
+    }, 1000)
+}
+
+
+
+audioTag.addEventListener('loadeddata', startTimer)
+// startTimer()
+let controls = document.getElementById("controls")
+
+
+const pause = document.getElementById("pause")
+
+
+pause.addEventListener('click', () => {
+
+    audioTag.pause()
+
+})
+
+const play = document.getElementById("play")
+
+play.addEventListener('click', () => {
+    audioTag.play()
+
+
 })
