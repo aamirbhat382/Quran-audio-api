@@ -1,11 +1,9 @@
-body{
-color: white;
-}
+
 html{
     scroll-behavior: smooth;
   }
   .one-Surah{
-      height: 70vh;
+      height: 85vh;
       overflow-y: auto;
       display: none;
       /* margin-top: 8rem; */
@@ -47,7 +45,7 @@ a{
     left: 0px;
     will-change: width;
     transition: width 0.1s ease-in;
-    background-color: rgb(179, 76, 76); 
+    background-color: rgb(76, 112, 179); 
      height: 5px;
 }
 .controls button{
@@ -65,4 +63,73 @@ a{
 }
 .currentAndtotal{
     margin: 0rem 0.3rem;
+}
+.w-actions__fab {
+    align-items: center;
+    background-color: #198754;
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%), 0 1px 10px 0 rgb(0 0 0 / 12%);
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: Segoe UI,system-ui,-apple-system,sans-serif;
+    font-size: .875em;
+    font-weight: 600;
+    height: 56px;
+    letter-spacing: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-indent: -9999px;
+    text-overflow: initial;
+    text-transform: uppercase;
+    width: 56px;
+}
+.w-actions__fab--subscribe:hover {
+    background-color: #90cfb2;;
+    color:rgb(94, 125, 212);;
+}
+.w-actions>* {
+    margin-top: 20px;
+}
+.w-actions__fab--subscribe::before {
+    background-image: url(../images/arrow-left-circle.svg);
+}
+.w-actions__fab::before {
+    background-size: 24px 24px;
+    content: "";
+    height: 24px;
+    left: 16px;
+    position: absolute;
+    top: 16px;
+    width: 24px;
+}
+.w-actions__fab::after {
+    bottom: 0;
+    content: "";
+    left: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: background-color .2s,border .2s;
+    z-index: 1;
+}
+@media (min-width: 1264px){
+.w-actions__fab {
+    border-radius: 28px;
+    padding: 0 24px 0 52px;
+    text-indent: 0;
+    width: auto;
+}}
+
+.w-actions {
+    align-items: flex-end;
+    bottom: 115px;
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    right: 24px;
+    z-index: 100;
 }

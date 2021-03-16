@@ -34,7 +34,9 @@ function getSurah() {
         btn.addEventListener('click', (e) => {
             document.getElementById('ListOfSurah').style.display = 'none'
             container = document.getElementById('container').style.display = 'block'
-            container = document.getElementById('mainAudioPlayer').style.display = 'flex'
+            mainAudioPlayer = document.getElementById('mainAudioPlayer').style.display = 'flex'
+            Back_button = document.getElementById('w-actions').style.display = 'flex'
+
             const Id = btn.id
             fetch(`https://api.alquran.cloud/v1/surah/${Id}/ar.alafasy`).then(response => response.json()
             ).then(data => {
@@ -57,7 +59,7 @@ function surahDatiles(data) {
             <a  href="#ayah${index + 1}" id="ayahsNo${index}"  class="card-title btn btn-outline-secondary" >آیت${index + 1}</a> 
             </div>
             <div class="card-body" id='ayah${index + 1}'>
-            <h5 class="card-title" id="text-${index}">${element.text}</h5>
+            <h5 class="card-title " id="text-${index}">${element.text}</h5>
             <audio src='${element.audio}' controls></audio>
             <a  href="#" id='${index}'  class="card-title  ayahs " data-url="${element.audio}"></a>
             </div>
@@ -94,9 +96,9 @@ function surahDatiles(data) {
 
 
 
-// let BackBtn = document.getElementById('back').addEventListener('click', () => {
-//     window.location = 'index.html'
-// })
+let BackBtn = document.getElementById('back').addEventListener('click', () => {
+    window.location = 'index.html'
+})
 const audioTag = document.querySelector('audio')
 const currentTimeTag = document.querySelector('.current')
 const durationTag = document.querySelector('.total')
