@@ -1,4 +1,3 @@
-
 function showSurah(data) {
     let ListOfSurah = document.getElementById('ListOfSurah')
     let HTML = ''
@@ -17,15 +16,19 @@ function showSurah(data) {
         ListOfSurah.innerHTML = HTML
     }
 }
-
+let limit = 0
 
 const URL = 'https://api.alquran.cloud/v1/surah'
-fetch(URL).then(response => response.json()
-).then(data => {
+fetch(URL).then(response => response.json()).then(data => {
     // console.log(data.data);
     showSurah(data.data)
     getSurah()
 
+}).catch(err => {
+    alert(err)
+    let errorAlert = document.getElementById('errorAlert').innerHTML `<div class="alert alert-dark" role="alert">
+   Failed to fetch <a href='/'> Retry</a> 
+  </div>`
 })
 
 function getSurah() {
@@ -38,11 +41,17 @@ function getSurah() {
             Back_button = document.getElementById('w-actions').style.display = 'flex'
 
             const Id = btn.id
-            fetch(`https://api.alquran.cloud/v1/surah/${Id}/ar.alafasy`).then(response => response.json()
-            ).then(data => {
+
+
+
+
+            console.log(limit)
+
+            fetch(`https://api.alquran.cloud/v1/surah/${Id}/ar.alafasy`).then(response => response.json()).then(data => {
                 // console.log(data.data.ayahs);
                 surahDatiles(data.data.ayahs)
             })
+
         })
     })
 }
@@ -51,6 +60,7 @@ function getSurah() {
 function surahDatiles(data) {
     let container = document.getElementById('container')
 
+
     let html = ''
     data.forEach((element, index) => {
         // console.log(element)
@@ -58,7 +68,7 @@ function surahDatiles(data) {
         <div class="card-header">
             <a  href="#ayah${index + 1}" id="ayahsNo${index}"  class="card-title btn btn-outline-secondary" >آیت${index + 1}</a> 
             </div>
-            <div class="card-body" id='ayah${index + 1}'>
+            <div class="card-body bg-light" id='ayah${index + 1}'>
             <h5 class="card-title " id="text-${index}">${element.text}</h5>
             <audio src='${element.audio}' controls></audio>
             <a  href="#" id='${index}'  class="card-title  ayahs " data-url="${element.audio}"></a>
@@ -84,7 +94,7 @@ function surahDatiles(data) {
             player.src = ayahsArray[i].getAttribute('data-url');
             document.getElementById(`text-${i}`).style.color = 'green'
             document.getElementById(`ayahsNo${i}`).click()
-            // ayahsArray[i]
+                // ayahsArray[i]
             return;
         }
         i = 0;
@@ -122,7 +132,7 @@ const startTimer = () => {
             minutes = "0" + minutes;
         }
         const returningTime = `${hour ? hour + ":" : ""}${minutes ? minutes + ":" : "00:"}${seconds}`
-        // console.log(returningTime);
+            // console.log(returningTime);
         return returningTime
     }
     durationTag.innerText = strTime(duration)
@@ -140,7 +150,7 @@ const startTimer = () => {
 
 
 audioTag.addEventListener('loadeddata', startTimer)
-// startTimer()
+    // startTimer()
 let controls = document.getElementById("controls")
 
 
@@ -159,4 +169,42 @@ play.addEventListener('click', () => {
     audioTag.play()
 
 
+})
+
+let prayerTimes = document.getElementById('prayerTimes')
+let todaysDate = new Date().getDate()
+let month = new Date().getMonth() + 1
+let year = new Date().getFullYear()
+prayerTimes.addEventListener('click', (e) => {
+
+    navigator.geolocation.getCurrentPosition(showPosition);
+
+    function showPosition(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude
+        let URL = `https://api.aladhan.com/timings/${todaysDate}-${month}-${year}?latitude=${latitude}&longitude=${longitude}&method=1`
+
+
+
+
+        fetch(URL).then(response => response.json()).then(response => {
+            let dateReadable = document.getElementById('dateReadable').innerHTML = response.data.date.readable
+            let html = ''
+            for (const [key, value] of Object.entries(response.data.timings)) {
+                html += ` <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">${key}</div>
+                ${key}
+            </div>
+            <span class="badge bg-success p-2 rounded-pill">${value}</span>
+        </li>`
+            }
+
+            let _times = document.getElementById('_times').innerHTML = html
+
+
+        }).catch(err => {
+            let _times = document.getElementById('_times').innerHTML = `<h1 class='mx-auto'> Failed to fetch <a href='/'> Retry</a> </h1>`
+        })
+    }
 })
