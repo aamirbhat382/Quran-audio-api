@@ -5,10 +5,11 @@ function showSurah(data) {
         HTML += `
         <button  id='${element.number}' class=" surah list-group-item list-group-item-action bg-light text-dark ">
         <div class="d-flex w-100 justify-content-between">
-          <h5 class="mb-1">${element.name}</h5>
-          <small class="text-muted">Number Of Ayahs ${element.numberOfAyahs}  <span class="badge bg-success badge-pill ">${element.number}</span> </small>
+          
+          <small class="text-muted"> <span class="badge bg-success badge-pill ">${element.number}</span> Number Of Ayahs ${element.numberOfAyahs}</small>
+          <h5 class="mb-1 Quran-surha">${element.name}</h5>
         </div>
-        <p class="mb-1">${element.englishName}</p>
+        <p class="mb-1 surhaEnglishName">${element.englishName}</p>
         <small class="text-muted">${element.englishNameTranslation}</small>
         </button>`
     })
@@ -16,7 +17,7 @@ function showSurah(data) {
         ListOfSurah.innerHTML = HTML
     }
 }
-let limit = 0
+
 
 const URL = 'https://api.alquran.cloud/v1/surah'
 fetch(URL).then(response => response.json()).then(data => {
@@ -44,41 +45,63 @@ function getSurah() {
 
 
 
+            let limit = 0
+            let he = container.offsetHeight  - container.clientHeight + "px"
+            if(he == 7){
+                limit += 1
+            }
+            
+            fetch(`https://api.alquran.cloud/v1/surah/${Id}/editions/ar.alafasy,en.asad,ur.jalandhry?limit=${limit}`).then(response => response.json()).then(data => {
+                let audio_data = data.data[0];
+                let en_translation = data.data[1];
+                let ur_translation = data.data[2]
 
-            console.log(limit)
-
-            fetch(`https://api.alquran.cloud/v1/surah/${Id}/ar.alafasy`).then(response => response.json()).then(data => {
-                // console.log(data.data.ayahs);
-                surahDatiles(data.data.ayahs)
+                // console.log(data.data[0]);
+                surahDatiles(audio_data,en_translation,ur_translation)
             })
-
+         
+       
         })
     })
 }
 
 
-function surahDatiles(data) {
+function surahDatiles(audio_data,en_translation,ur_translation) {
     let container = document.getElementById('container')
-
-
+    
+     en_translation.ayahs.forEach((element,index)=>{
+        audio_data.ayahs[index].en_translation  = element.text
+    })
+     
+     ur_translation.ayahs.forEach((element,index)=>{
+        audio_data.ayahs[index].ur_translation = element.text
+    })
+    console.log(audio_data.ayahs)
     let html = ''
-    data.forEach((element, index) => {
-        // console.log(element)
-        html += `<div class="card text-center mb-3 bg-light">
+    audio_data.ayahs.forEach((element, index,array) => {
+       // console.log(element)
+        html += ` <div class="card text-center mb-3 bg-light">
         <div class="card-header">
             <a  href="#ayah${index + 1}" id="ayahsNo${index}"  class="card-title btn btn-outline-secondary" >آیت${index + 1}</a> 
             </div>
             <div class="card-body bg-light" id='ayah${index + 1}'>
-            <h5 class="card-title " id="text-${index}">${element.text}</h5>
-            <audio src='${element.audio}' controls></audio>
+            <h5 class="card-title Quran-ayah " id="text-${index}">${element.text}</h5>
+            <p class="card-title Quran-ayah " >${element.en_translation}</p>
+            <p class="card-title Quran-ayah " >${element.ur_translation}</p>
+            <audio src='${element.audio}'></audio>
             <a  href="#" id='${index}'  class="card-title  ayahs " data-url="${element.audio}"></a>
             </div>
             <div class="card-footer text-muted">
             Ruku - ${element.ruku} | juz - ${element.juz} | Page - ${element.page} | Manzil - ${element.manzil} - 
             </div>
-        </div>`
+        </div>
+`
     })
-    container.innerHTML = html
+    let _dev = document.createElement('div');
+    _dev.innerHTML =  html
+    container.appendChild(_dev)
+
+
     const ayahsArray = document.getElementsByClassName('ayahs')
     let i = 0
     let player = document.getElementById('player')

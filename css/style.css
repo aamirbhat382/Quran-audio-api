@@ -8,6 +8,21 @@ html{
       display: none;
       /* margin-top: 8rem; */
   }
+
+ 
+  .Quran-ayah{
+    font-family: 'Amiri', serif;
+    font-weight:600;
+}
+.Quran-surha{
+    /*color: #e7adff;*/
+ font-family: 'Amiri', serif;
+    font-weight:600;
+}
+.surhaEnglishName{
+    font-weight: 500;
+    font-style: italic;
+}
                                                                                    
 audio{
 max-width : 500px;
@@ -35,6 +50,8 @@ a{
     align-items: center;
     justify-content: space-between;
     position: fixed;
+    background-image: linear-gradient(
+    90deg, rgb(131, 58, 180) 0%, rgb(201 97 97) 50%, rgb(252, 176, 69) 100%);
 }
 .duration{
     display: flex;
@@ -45,7 +62,7 @@ a{
     left: 0px;
     will-change: width;
     transition: width 0.1s ease-in;
-    background-color: rgb(76, 112, 179); 
+    background-color: rgb(37 41 49); 
      height: 5px;
 }
 .controls button{
@@ -93,6 +110,7 @@ a{
 .w-actions>* {
     margin-top: 20px;
 }
+
 .w-actions__fab--subscribe::before {
     background-image: url(../images/arrow-left-circle.svg);
 }
@@ -133,3 +151,4 @@ a{
     right: 24px;
     z-index: 100;
 }
+
