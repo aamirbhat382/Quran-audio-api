@@ -1,3 +1,5 @@
+let global_index=0
+
 function showSurah(data) {
     let ListOfSurah = document.getElementById('ListOfSurah')
     let HTML = ''
@@ -65,6 +67,9 @@ function getSurah() {
     })
 }
 
+function ayahHandler(verseNo) {
+    global_index = verseNo - 1;
+}
 
 function surahDatiles(audio_data,en_translation,ur_translation) {
     let container = document.getElementById('container')
@@ -82,7 +87,7 @@ function surahDatiles(audio_data,en_translation,ur_translation) {
        // console.log(element)
         html += ` <div class="card text-center mb-3 bg-light">
         <div class="card-header">
-            <a  href="#ayah${index + 1}" id="ayahsNo${index}"  class="card-title btn btn-outline-secondary" >آیت${index + 1}</a> 
+            <a  href="#ayah${index + 1}" id="ayahsNo${index}" onclick='ayahHandler(${index})' class="card-title btn btn-outline-secondary" >آیت${index + 1}</a> 
             </div>
             <div class="card-body bg-light" id='ayah${index + 1}'>
             <h5 class="card-title Quran-ayah " id="text-${index}">${element.text}</h5>
@@ -103,27 +108,36 @@ function surahDatiles(audio_data,en_translation,ur_translation) {
 
 
     const ayahsArray = document.getElementsByClassName('ayahs')
-    let i = 0
+    let i = global_index
     let player = document.getElementById('player')
     player.src = ayahsArray[i].getAttribute('data-url')
     document.getElementById(`text-${i}`).style.color = 'green'
 
+    // my contribution
+    // document.getElementById(`ayahsNo${i}`).addEventListener('click', ()=> {
+    //     console.log(i, ' ayah clicked!!!')
+    // })
 
     player.addEventListener('ended', () => {
+        if ( global_index !==0 ) {
+            i=global_index
+            global_index=0
+        }
+            
         document.getElementById(`text-${i}`).style.color = 'black'
         i++;
         if (i < ayahsArray.length) {
 
             player.src = ayahsArray[i].getAttribute('data-url');
             document.getElementById(`text-${i}`).style.color = 'green'
-            document.getElementById(`ayahsNo${i}`).click()
+            //document.getElementById(`ayahsNo${i}`).click()
                 // ayahsArray[i]
             return;
         }
         i = 0;
         player.src = ayahsArray[i].getAttribute('data-url');
         document.getElementById(`text-${i}`).style.color = 'green'
-        document.getElementById(`ayahsNo${i}`).click()
+        //document.getElementById(`ayahsNo${i}`).click()
     })
 }
 
